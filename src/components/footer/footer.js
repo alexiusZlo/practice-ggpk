@@ -9,45 +9,22 @@ export default function FoOter() {
                         <h5>Sarkhanas</h5>
                         <ul class="text-unstyled text-small">
                             <li>
-                                <a href="" class="link-secondary">Articles</a>
+                                <a href="" class="link-secondary">Advertising</a>
                             </li>
                             <li>
-                                <a href="" class="link-secondary">Articles</a>
+                                <a href="" class="link-secondary">Advertising</a>
                             </li>
                             <li>
-                                <a href="" class="link-secondary">Articles</a>
+                                <a href="" class="link-secondary">Advertising</a>
                             </li>
                             <li>
-                                <a href="" class="link-secondary">Articles</a>
+                                <a href="" class="link-secondary">Advertising</a>
                             </li>
                             <li>
-                                <a href="" class="link-secondary">Articles</a>
+                                <a href="" class="link-secondary">Advertising</a>
                             </li>
                             <li>
-                                <a href="" class="link-secondary">Articles</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-6 col-md">
-                        <h5>Sarkhanas</h5>
-                        <ul class="text-unstyled text-small">
-                            <li>
-                                <a href="" class="link-secondary">Articles</a>
-                            </li>
-                            <li>
-                                <a href="" class="link-secondary">Articles</a>
-                            </li>
-                            <li>
-                                <a href="" class="link-secondary">Articles</a>
-                            </li>
-                            <li>
-                                <a href="" class="link-secondary">Articles</a>
-                            </li>
-                            <li>
-                                <a href="" class="link-secondary">Articles</a>
-                            </li>
-                            <li>
-                                <a href="" class="link-secondary">Articles</a>
+                                <a href="" class="link-secondary">Advertising</a>
                             </li>
                         </ul>
                     </div>
@@ -55,22 +32,22 @@ export default function FoOter() {
                         <h5>Sarkhanas</h5>
                         <ul class="text-unstyled text-small">
                             <li>
-                                <a href="" class="link-secondary">Articles</a>
+                                <a href="" class="link-secondary">Advertising</a>
                             </li>
                             <li>
-                                <a href="" class="link-secondary">Articles</a>
+                                <a href="" class="link-secondary">Advertising</a>
                             </li>
                             <li>
-                                <a href="" class="link-secondary">Articles</a>
+                                <a href="" class="link-secondary">Advertising</a>
                             </li>
                             <li>
-                                <a href="" class="link-secondary">Articles</a>
+                                <a href="" class="link-secondary">Advertising</a>
                             </li>
                             <li>
-                                <a href="" class="link-secondary">Articles</a>
+                                <a href="" class="link-secondary">Advertising</a>
                             </li>
                             <li>
-                                <a href="" class="link-secondary">Articles</a>
+                                <a href="" class="link-secondary">Advertising</a>
                             </li>
                         </ul>
                     </div>
@@ -78,22 +55,45 @@ export default function FoOter() {
                         <h5>Sarkhanas</h5>
                         <ul class="text-unstyled text-small">
                             <li>
-                                <a href="" class="link-secondary">Articles</a>
+                                <a href="" class="link-secondary">Advertising</a>
                             </li>
                             <li>
-                                <a href="" class="link-secondary">Articles</a>
+                                <a href="" class="link-secondary">Advertising</a>
                             </li>
                             <li>
-                                <a href="" class="link-secondary">Articles</a>
+                                <a href="" class="link-secondary">Advertising</a>
                             </li>
                             <li>
-                                <a href="" class="link-secondary">Articles</a>
+                                <a href="" class="link-secondary">Advertising</a>
                             </li>
                             <li>
-                                <a href="" class="link-secondary">Articles</a>
+                                <a href="" class="link-secondary">Advertising</a>
                             </li>
                             <li>
-                                <a href="" class="link-secondary">Articles</a>
+                                <a href="" class="link-secondary">Advertising</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-6 col-md">
+                        <h5>Sarkhanas</h5>
+                        <ul class="text-unstyled text-small">
+                            <li>
+                                <a href="" class="link-secondary">Advertising</a>
+                            </li>
+                            <li>
+                                <a href="" class="link-secondary">Advertising</a>
+                            </li>
+                            <li>
+                                <a href="" class="link-secondary">Advertising</a>
+                            </li>
+                            <li>
+                                <a href="" class="link-secondary">Advertising</a>
+                            </li>
+                            <li>
+                                <a href="" class="link-secondary">Advertising</a>
+                            </li>
+                            <li>
+                                <a href="" class="link-secondary">Advertising</a>
                             </li>
                         </ul>
                     </div>
