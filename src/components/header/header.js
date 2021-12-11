@@ -1,6 +1,13 @@
 import React from 'react';
 import { Nav, Navbar, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import {
+    BrowserRouter as Router,
+    Route,
+    Routes,//==Switch in 'react-router-dom' v6
+    Link
+} from 'react-router-dom';
+import Home from '../../pages/homePage/homePage';
+import News from '../../pages/news/news';
 
 export default function NaviBar() {
     return (
@@ -10,8 +17,8 @@ export default function NaviBar() {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto">
-                        <Nav.Link><Link to="/"> Articles </Link></Nav.Link>
-                        <Nav.Link><Link to="/news"> News </Link></Nav.Link>
+                        <Nav.Link href="/">Articles</Nav.Link>
+                        <Nav.Link href="/news">News</Nav.Link>
                     </Nav>
                     <Nav>
                         <Button variant="primary" className="mr-2">
@@ -21,6 +28,13 @@ export default function NaviBar() {
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
+
+            <Router>
+                <Routes>
+                    <Route exact path="/" component={Home} />
+                    <Route exact path="/news" component={News} />
+                </Routes>
+            </Router>
         </>
     )
 }

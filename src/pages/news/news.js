@@ -1,11 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
+import '../../App.css'
 
-const News = () => {
+export default function News() {
     return (
-        <>
-            <h1>News page</h1>
-        </>
-    );
+        <div>
+            News page
+        </div>)
 }
-
-export default News;

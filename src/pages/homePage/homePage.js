@@ -1,11 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
+import '../../App.css'
 
-const homePage = () => {
+export default function Home() {
     return (
-        <>
-            <h1>Articles page</h1>
-        </>
-    )
+        <div>
+            Articles page
+        </div>)
 }
-
-export default homePage;

@@ -1,7 +1,7 @@
 import './App.css';
 import NaviBar from './components/header/header';
-import FoOter from './components/footer/footer'
-import homePage from './pages/homePage/homePage';
+import FoOter from './components/footer/footer';
+import Home from './pages/homePage/homePage';
 import News from './pages/news/news';
 import {
     BrowserRouter as Router,
@@ -10,24 +10,29 @@ import {
     Link
 } from 'react-router-dom';
 
+{/* TODO create HEADER (component) with routes */ }
+{/* TODO create HomePage (component) */ }
+{/* TODO create Footer (component) */ }
+
 const App = () => {
     return (
         <>
             <header>
-                <Router>
-                    <div className="App">
-                        {/* TODO create HEADER (component) with routes */}
-                        {/* TODO create HomePage (component) */}
-                        {/* TODO create Footer (component) */}
-                        <NaviBar />
-                        <Routes>
-                            <Route exact path="/" component={homePage} />
-                            <Route path="/news" component={News} />
-                        </Routes>
-                    </div>
-                </Router>
+                <NaviBar />
             </header>
-            <FoOter />
+            <body>
+                <div>
+                    <Router>
+                        <Routes>
+                            <Route exact path="/" element={<Home/>} />
+                            <Route exact path="/news" element={<News/>} />
+                        </Routes>
+                    </Router>
+                </div>
+            </body>
+            <footer>
+                <FoOter />
+            </footer>  
         </>
   );
 }
