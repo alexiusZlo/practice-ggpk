@@ -3,8 +3,12 @@
     "",
     "\\src",
     "\\src\\components",
-    "\\src\\components\\header"
+    "\\src\\components\\footer",
+    "\\src\\components\\header",
+    "\\src\\pages",
+    "\\src\\pages\\homePage",
+    "\\src\\pages\\news"
   ],
-  "SelectedNode": "\\src\\App.js",
+  "SelectedNode": "\\src\\components\\header\\header.js",
   "PreviewInSolutionExplorer": false
 }
