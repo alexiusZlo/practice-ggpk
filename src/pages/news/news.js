@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import '../../App.css'
 
-export default function Home() {
+export default function News() {
     return (
         <div>
-            Articles page
+            News page
         </div>)
 }

@@ -1,29 +1,37 @@
-import logo from './logo.svg';
 import './App.css';
-import { Button } from 'react-bootstrap';
+import NaviBar from './components/header/header';
+import FoOter from './components/footer/footer';
+import Home from './pages/homePage/homePage';
+import News from './pages/news/news';
+import {
+    BrowserRouter as Router,
+    Route,
+    Routes,//==Switch in 'react-router-dom' v6
+    Link
+} from 'react-router-dom';
+
+{/* TODO create HEADER (component) with routes DONE*/ }
+{/* TODO create HomePage (component) NOT DONE*/ }
+{/* TODO create Footer (component) ALMOST DONE*/ }
 
 const App = () => {
-  return (
-    <div className="App">
-      {/* TODO create HEADER (component) with routes */}
-      {/* TODO create HomePage (component) */}
-      {/* TODO create Footer (component) */}
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <Button>remove this, it is needed to check bootstrap</Button>
-      </header>
-    </div>
+    return (
+        <>
+            <header>
+                <NaviBar />
+            </header>
+            <body>
+                <Router>
+                    <Routes>
+                        <Route exact path="/" element={<Home />} />
+                        <Route path="/news" element={<News />} />
+                    </Routes>
+                </Router>
+            </body>
+            <footer>
+                <FoOter />
+            </footer>  
+        </>
   );
 }
 
