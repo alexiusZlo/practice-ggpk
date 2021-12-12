@@ -14,7 +14,7 @@ export default function NaviBar() {
         <>
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
                 <Container>
-                    <Navbar.Brand>Sarkhanas</Navbar.Brand>
+                    <Navbar.Brand href="/">Sarkhanas</Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Container>
@@ -41,7 +41,7 @@ export default function NaviBar() {
             <Router>
                 <Routes>
                     <Route exact path="/" component={Home} />
-                    <Route exact path="/news" component={News} />
+                    <Route path="/news" component={News} />
                 </Routes>
             </Router>
         </>

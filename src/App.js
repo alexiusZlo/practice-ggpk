@@ -10,9 +10,9 @@ import {
     Link
 } from 'react-router-dom';
 
-{/* TODO create HEADER (component) with routes */ }
-{/* TODO create HomePage (component) */ }
-{/* TODO create Footer (component) */ }
+{/* TODO create HEADER (component) with routes DONE*/ }
+{/* TODO create HomePage (component) NOT DONE*/ }
+{/* TODO create Footer (component) ALMOST DONE*/ }
 
 const App = () => {
     return (
@@ -21,14 +21,12 @@ const App = () => {
                 <NaviBar />
             </header>
             <body>
-                <div>
-                    <Router>
-                        <Routes>
-                            <Route exact path="/" element={<Home/>} />
-                            <Route exact path="/news" element={<News/>} />
-                        </Routes>
-                    </Router>
-                </div>
+                <Router>
+                    <Routes>
+                        <Route exact path="/" element={<Home />} />
+                        <Route path="/news" element={<News />} />
+                    </Routes>
+                </Router>
             </body>
             <footer>
                 <FoOter />
