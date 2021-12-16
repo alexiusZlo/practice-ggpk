@@ -1,12 +1,35 @@
 const fs = require('fs')
 const path = require('path')
 const express = require('express')
-const buildClusters = require('./buildClusters')
+/*const buildClusters = require('./buildClusters')*/
+const config = require('config')
+const mongoose = require('mongoose')
 
 const app = express()
-const port = 3000
 
-const gundata = JSON.parse(fs.readFileSync(path.join(__dirname, 'data', 'gundata-US.json')))
+app.use(express.json({ extended: true }))
+
+app.use('/api/auth', require('./routes/auth.routes'))
+
+const port = config.get('port') || 3000
+
+
+async function start() {
+    try {
+        await mongoose.connect(config.get('mongoUri'), {
+            useNewUrlParser: true,
+            useUnifiedTopology: true
+        })
+        app.listen(port, () => console.log(`Server running on http://localhost:${port}`))
+    } catch (e) {
+        console.log('Server Error', e.message)
+        process.exit(1)
+    }
+}
+
+
+start()
+/*const gundata = JSON.parse(fs.readFileSync(path.join(__dirname, 'data', 'gundata-US.json')))
 
 const clusteredGundata = buildClusters(gundata)
 
@@ -20,6 +43,4 @@ app.get('/api/clustered-gundata', (req, res) => {
     res.status(400).json({ error: 'precision should be an integer between 1 and 12' })
   }
   res.json(clusteredGundata(precision))
-})
-
-app.listen(port, () => console.log(`Server running on http://localhost:${port}`))
+})*/
