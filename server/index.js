@@ -11,6 +11,7 @@ app.use(express.json({ extended: true }))
 
 app.use('/api/auth', require('./routes/auth.routes'))
 
+
 const port = config.get('port') || 3000
 
 

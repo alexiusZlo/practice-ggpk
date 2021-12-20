@@ -1,5 +1,5 @@
 {
   "port": 3000,
   "mongoUri": "mongodb+srv://Sarkhanas:9573541Xxy@cluster0.ujgki.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
-  "jstSecret": "practice ggpk"
+  "jstSecret": "practice_ggpk"
 }
