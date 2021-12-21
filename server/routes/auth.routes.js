@@ -4,7 +4,6 @@ const { check, validationResult } = require('express-validator')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
 const User = require('../models/User')
-const Admin = require('../models/Admin')
 const router = Router()
 
 router.post(
@@ -33,7 +32,7 @@ router.post(
         }
 
         const hashedPassword = await bcrypt.hash(password, 12)
-        const user = new User({ email, hashedPassword })
+        const user = new User({ email, hashedPassword, isAdmin: false })
 
         await user.save()
 
@@ -63,47 +62,25 @@ router.post(
 
             const { email, password } = req.body
 
-            if (password != config.get('jwtSecret')) {
-                const user = await User.findOne({ email })
+            const user = await User.findOne({ email })
 
-                if (!user) {
-                    return res.status(400).json({ message: 'Пользователь не найден' })
-                }
-
-                const isMatch = await bcrypt.compare(password, user.password)
-
-                if (!isMatch) {
-                    return res.status(400).json({ message: 'Неверный email или пароль' })
-                }
-
-                const token = jwt.sign(
-                    { userId: user.id },
-                    config.get('jwtSecret'),
-                    { expiresIn: '1h' }
-                )
-
-                res.json({ token, userId: user.id })
-            } else {
-                const admin = await Admin.findOne({ email })
-
-                if (!user) {
-                    return res.status(400).json({ message: 'Пользователь не найден' })
-                }
-
-                const isMatch = await bcrypt.compare(password, admin.password)
-
-                if (!isMatch) {
-                    return res.status(400).json({ message: 'Неверный email или пароль' })
-                }
-
-                const token = jwt.sign(
-                    { adminId: admin.id },
-                    config.get('jwtSecret'),
-                    { expiresIn: '1h' }
-                )
-
-                res.json({ token, adminId: admin.id })
+            if (!user) {
+                return res.status(400).json({ message: 'Пользователь не найден' })
             }
+
+            const isMatch = await bcrypt.compare(password, user.password)
+
+            if (!isMatch) {
+                return res.status(400).json({ message: 'Неверный email или пароль' })
+            }
+
+            const token = jwt.sign(
+                { userId: user.id },
+                config.get('jwtSecret'),
+                { expiresIn: '1h' }
+            )
+
+            res.json({ token, userId: user.id })
 
         } catch (e) {
             res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова' })

@@ -1,11 +1,16 @@
 {
   "ExpandedNodes": [
     "",
+    "\\client",
+    "\\client\\src",
+    "\\client\\src\\components",
+    "\\client\\src\\context",
+    "\\client\\src\\hooks",
     "\\server",
-    "\\server\\config",
     "\\server\\data",
     "\\server\\models",
     "\\server\\routes"
   ],
+  "SelectedNode": "\\server",
   "PreviewInSolutionExplorer": false
 }

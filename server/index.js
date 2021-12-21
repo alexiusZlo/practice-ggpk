@@ -12,7 +12,7 @@ app.use(express.json({ extended: true }))
 app.use('/api/auth', require('./routes/auth.routes'))
 
 
-const port = config.get('port') || 3000
+const port = config.get('port') || 3001
 
 
 async function start() {
