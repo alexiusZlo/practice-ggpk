@@ -10,9 +10,10 @@ const app = express()
 app.use(express.json({ extended: true }))
 
 app.use('/api/auth', require('./routes/auth.routes'))
+app.use('/api/articles', require('./routes/article.routes'))
 
 
-const port = config.get('port') || 3001
+const port = config.get('port') || 3000
 
 
 async function start() {

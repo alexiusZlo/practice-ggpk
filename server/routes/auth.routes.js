@@ -32,7 +32,7 @@ router.post(
         }
 
         const hashedPassword = await bcrypt.hash(password, 12)
-        const user = new User({ email, hashedPassword, isAdmin: false })
+        const user = new User({ email: email, password: hashedPassword })
 
         await user.save()
 
@@ -41,13 +41,25 @@ router.post(
     } catch (e) {
         res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'})
     }
-})
+    })
+
+/*router.post(
+    '/login',
+    [],
+    async (req, res) => {
+        console.log(req)
+        const usersCollection = await User.find()
+
+        res.status(200).json({
+            users: usersCollection
+        })
+    })*/
 
 router.post(
     '/login',
     [
         check('email', 'Неверный email или пароль').normalizeEmail().isEmail(),
-        check('password', 'Введите пароль').exists
+        check('password', 'Введите пароль').exists()
     ],
     async (req, res) => {
         try {
@@ -83,7 +95,7 @@ router.post(
             res.json({ token, userId: user.id })
 
         } catch (e) {
-            res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова' })
+            res.status(500).json({ message: e.message })
         }
 })
 

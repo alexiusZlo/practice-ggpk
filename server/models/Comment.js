@@ -4,7 +4,7 @@ const schema = new Schema({
     text: { type: String, required: true },
     date: { type: Date, default: Date.now, required: true },
     articleId: { type: Types.ObjectId, ref: 'Article' },
-    owner: { type: Types.ObjectId, ref: 'User' }
+    authorId: { type: Types.ObjectId, ref: 'User' }
 })
 
 module.exports = model('Comment', schema)
