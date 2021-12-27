@@ -1,15 +1,12 @@
 {
   "ExpandedNodes": [
     "",
-    "\\client\\src\\components",
-    "\\client\\src\\context",
-    "\\client\\src\\hooks",
-    "\\client\\src\\pages",
-    "\\client\\src\\pages\\homePage",
+    "\\server",
+    "\\server\\config",
     "\\server\\data",
     "\\server\\models",
     "\\server\\routes"
   ],
-  "SelectedNode": "\\client",
+  "SelectedNode": "\\server\\routes\\news.routes.js",
   "PreviewInSolutionExplorer": false
 }

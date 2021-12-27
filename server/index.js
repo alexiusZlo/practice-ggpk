@@ -11,6 +11,7 @@ app.use(express.json({ extended: true }))
 
 app.use('/api/auth', require('./routes/auth.routes'))
 app.use('/api/articles', require('./routes/article.routes'))
+app.use('/api/news', require('./routes/news.routes'))
 
 
 const port = config.get('port') || 3000
