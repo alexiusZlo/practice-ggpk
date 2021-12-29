@@ -4,9 +4,9 @@
     "\\server",
     "\\server\\config",
     "\\server\\data",
+    "\\server\\middleware",
     "\\server\\models",
     "\\server\\routes"
   ],
-  "SelectedNode": "\\server\\routes\\news.routes.js",
   "PreviewInSolutionExplorer": false
 }

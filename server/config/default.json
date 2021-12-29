@@ -1,5 +1,6 @@
 {
   "port": 3000,
   "mongoUri": "mongodb+srv://Sarkhanas:9573541Xxy@cluster0.ujgki.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", /*9573541Xxy*/
-  "jwtSecret": "practice_ggpk"
+  "jwtSecret": "practice_ggpk",
+  "baseUrl":  "http://localhost:3000"
 }
