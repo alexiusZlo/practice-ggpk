@@ -23,7 +23,7 @@ router.post(
             })
         }
 
-        const { email, password } = req.body
+        const { email, password, name } = req.body
 
         const candidate = await User.findOne({ email })
 
@@ -32,7 +32,7 @@ router.post(
         }
 
         const hashedPassword = await bcrypt.hash(password, 12)
-        const user = new User({ email: email, password: hashedPassword })
+        const user = new User({ email: email, password: hashedPassword, name: name })
 
         await user.save()
 

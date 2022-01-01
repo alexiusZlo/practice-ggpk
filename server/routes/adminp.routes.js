@@ -6,6 +6,7 @@ const auth = require('../middleware/auth.middleware')
 const Game = require('../models/Game')
 const Type = require('../models/Type')
 const Article = require('../models/Article')
+const Comment = require('../models/Comment')
 const router = Router()
 
 router.post(
@@ -19,6 +20,14 @@ router.post(
             const candidate = await Article.findOne({ title, isNews })
             const gameId = await Game.findOne({ name: game }, { name: 0 })
             const typeId = await Type.findOne({ name: type }, { name: 0 })
+
+            if (!gameId) {
+                return res.status(404).json({ message: 'Game not found' })
+            }
+
+            if (!typeId) {
+                return res.status(404).json({ message: 'Type not found' })
+            }
 
             if (candidate) {
                 return res.status(400).json({ message: 'Such an article or news already exists' })
@@ -53,48 +62,139 @@ router.post(
         }
     })
 
-/*router.post(
-    '/delete',
-    [
-        check('email', 'Неверный email или пароль').normalizeEmail().isEmail(),
-        check('password', 'Введите пароль').exists()
-    ],
+router.get(
+    '/find',
+    auth,
     async (req, res) => {
         try {
-            const errors = validationResult(req)
+            const { title, isNews } = req.body
 
-            if (!errors.isEmpty()) {
-                return res.status(400).json({
-                    errors: errors.array(),
-                    message: 'Некорректные данные при входе в систему'
-                })
+            const candidate = await Article.findOne({ title, isNews }, { _id: 0 })
+
+
+            if (!candidate) {
+                return res.status(404).json({ message: 'Not found' })
             }
 
-            const { email, password } = req.body
+            const authorized = req.headers.authorization
 
-            const user = await User.findOne({ email })
-
-            if (!user) {
-                return res.status(400).json({ message: 'Пользователь не найден' })
+            if (!authorized) {
+                return res.status(401).json({ message: 'No authorization' })
             }
 
-            const isMatch = await bcrypt.compare(password, user.password)
-
-            if (!isMatch) {
-                return res.status(400).json({ message: 'Неверный email или пароль' })
-            }
-
-            const token = jwt.sign(
-                { userId: user.id },
-                config.get('jwtSecret'),
-                { expiresIn: '1h' }
-            )
-
-            res.json({ token, userId: user.id })
+            return res.json(candidate)
 
         } catch (e) {
             res.status(500).json({ message: e.message })
         }
-    })*/
+    })
+
+router.put(
+    '/redact',
+    auth,
+    async (req, res) => {
+        try {
+            const { title, redTitle, content, isNews, game, type } = req.body
+
+            const authorized = req.headers.authorization
+            const gameId = await Game.findOne({ name: game }, { name: 0 })
+            const typeId = await Type.findOne({ name: type }, { name: 0 })
+
+            if (!gameId) {
+                return res.status(404).json({ message: 'Game not found' })
+            }
+
+            if (!typeId) {
+                return res.status(404).json({ message: 'Type not found' })
+            }
+
+            if (!authorized) {
+                return res.status(401).json({ message: 'No authorization' })
+            }
+
+            await Article.updateOne({ title: title, isNews: isNews }, {title: redTitle, content: content, gameId: gameId, typeId: typeId})
+
+            res.json({ message: 'article redacted' })
+
+        } catch (e) {
+            res.status(500).json({ message: e.message })
+        }
+    })
+
+router.delete(
+    '/delete',
+    auth,
+    async (req, res) => {
+        try {
+            const { title, isNews } = req.body
+
+            const candidate = Article.findOne({ title, isNews })
+
+            if (!candidate) {
+                return res.status(404).json({ message: 'Not found' })
+            }
+
+            const authorized = req.headers.authorization
+
+            if (!authorized) {
+                return res.status(401).json({ message: 'No authorization' })
+            }
+
+            await Article.deleteOne({ title: title, isNews: isNews})
+
+            res.json({ message: 'article deleted' })
+
+        } catch (e) {
+            res.status(500).json({ message: e.message })
+        }
+    })
+
+router.delete(
+    '/remove_comment',
+    auth,
+    async (req, res) => {
+        try {
+            const { articleTitle, isNews, userName, date } = req.body
+
+            const authorId = await User.findOne({ name: userName },
+                {
+                    name: 0,
+                    email: 0,
+                    password: 0,
+                    isAdmin:0
+                })
+
+            const articleId = await Article.findOne({ title: articleTitle, isNews: isNews },
+                {
+                    title: 0,
+                    content: 0,
+                    gameId: 0,
+                    typeId: 0,
+                    isNews: 0,
+                    picture: 0,
+                    authorId: 0,
+                    date:0
+                })
+
+            const candidate = await Comment.findOne({ articleId: articleId, authorId: authorId, date: date })
+
+            if (!candidate) {
+                return res.status(404).json({ message: 'Not found' })
+            }
+
+            const authorized = req.headers.authorization
+
+            if (!authorized) {
+                return res.status(401).json({ message: 'No authorization' })
+            }
+
+            await Comment.deleteOne({ articleId: articleId, authorId: authorId, date: date })
+
+            res.json({ message: 'comment deleted' })
+
+        } catch (e) {
+            res.status(500).json({ message: e.message })
+        }
+    })
 
 module.exports = router
