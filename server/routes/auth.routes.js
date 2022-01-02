@@ -43,18 +43,6 @@ router.post(
     }
     })
 
-/*router.post(
-    '/login',
-    [],
-    async (req, res) => {
-        console.log(req)
-        const usersCollection = await User.find()
-
-        res.status(200).json({
-            users: usersCollection
-        })
-    })*/
-
 router.post(
     '/login',
     [
