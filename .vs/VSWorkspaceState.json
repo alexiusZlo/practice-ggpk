@@ -3,11 +3,10 @@
     "",
     "\\server",
     "\\server\\config",
-    "\\server\\data",
     "\\server\\middleware",
     "\\server\\models",
     "\\server\\routes"
   ],
-  "SelectedNode": "\\client",
+  "SelectedNode": "\\server\\package.json",
   "PreviewInSolutionExplorer": false
 }

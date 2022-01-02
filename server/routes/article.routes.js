@@ -20,7 +20,7 @@ router.get(
             return res.json(articles)
 
         } catch (e) {
-            res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова' })
+            res.status(500).json({ message: 'Something goes wrong, try again' })
         }
     }
 )
@@ -41,7 +41,7 @@ router.get(
             return res.json(articles)
 
         } catch (e) {
-            res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова' })
+            res.status(500).json({ message: 'Something goes wrong, try again' })
         }
     }
 )
@@ -62,7 +62,7 @@ router.get(
             return res.json(articles)
 
         } catch (e) {
-            res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова' })
+            res.status(500).json({ message: 'Something goes wrong, try again' })
         }
     }
 )
@@ -83,7 +83,7 @@ router.get(
             return res.json(articles)
 
         } catch (e) {
-            res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова' })
+            res.status(500).json({ message: 'Something goes wrong, try again' })
         }
     }
 )
@@ -99,7 +99,7 @@ router.get(
             return res.json(articles)
 
         } catch (e) {
-            res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова' })
+            res.status(500).json({ message: 'Something goes wrong, try again' })
         }
     }
 )
