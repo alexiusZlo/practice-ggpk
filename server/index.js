@@ -14,6 +14,7 @@ app.use('/api/news', require('./routes/news.routes'))
 app.use('/api/adminp', require('./routes/adminp.routes'))
 app.use('/api/comment', require('./routes/comment.routes'))
 app.use('/api/profile', require('./routes/profile.routes'))
+app.use('/api/search', require('./routes/search.routes'))
 
 
 const port = config.get('port') || 3000
