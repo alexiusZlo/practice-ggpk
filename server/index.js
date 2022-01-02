@@ -13,6 +13,8 @@ app.use('/api/auth', require('./routes/auth.routes'))
 app.use('/api/articles', require('./routes/article.routes'))
 app.use('/api/news', require('./routes/news.routes'))
 app.use('/api/adminp', require('./routes/adminp.routes'))
+app.use('/api/comment', require('./routes/comment.routes'))
+app.use('/api/profile', require('./routes/profile.routes'))
 
 
 const port = config.get('port') || 3000

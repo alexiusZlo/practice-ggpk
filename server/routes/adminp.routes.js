@@ -150,33 +150,19 @@ router.delete(
     })
 
 router.delete(
-    '/remove_comment',
+    '/banhammer',
     auth,
     async (req, res) => {
         try {
-            const { articleTitle, isNews, userName, date } = req.body
+            const { name } = req.body
 
-            const authorId = await User.findOne({ name: userName },
-                {
-                    name: 0,
-                    email: 0,
-                    password: 0,
-                    isAdmin:0
-                })
+            const candidate = User.findOne({ name: name })
+            const isAdmin = User.findOne({ name: name },
+                { _id: 0, name: 0, email: 0, password: 0 })
 
-            const articleId = await Article.findOne({ title: articleTitle, isNews: isNews },
-                {
-                    title: 0,
-                    content: 0,
-                    gameId: 0,
-                    typeId: 0,
-                    isNews: 0,
-                    picture: 0,
-                    authorId: 0,
-                    date:0
-                })
-
-            const candidate = await Comment.findOne({ articleId: articleId, authorId: authorId, date: date })
+            if (isAdmin == true) {
+                return res.status(403).json({ message: 'You can not ban admin' })
+            }
 
             if (!candidate) {
                 return res.status(404).json({ message: 'Not found' })
@@ -188,9 +174,9 @@ router.delete(
                 return res.status(401).json({ message: 'No authorization' })
             }
 
-            await Comment.deleteOne({ articleId: articleId, authorId: authorId, date: date })
+            await User.deleteOne({ name: name })
 
-            res.json({ message: 'comment deleted' })
+            res.json({ message: 'User banned' })
 
         } catch (e) {
             res.status(500).json({ message: e.message })

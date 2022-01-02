@@ -193,4 +193,20 @@ router.get(
     }
 )
 
+router.get(
+    '/show',
+    async (req, res) => {
+        try {
+            const { title } = req.body
+
+            const articles = await Article.findOne({ title: title, isNews: 'true' }, { _id: 0 })
+
+            return res.json(articles)
+
+        } catch (e) {
+            res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова' })
+        }
+    }
+)
+
 module.exports = router
